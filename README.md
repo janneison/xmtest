@@ -34,50 +34,15 @@ Descripción de los servicios a usar.
 - Almacenamiento: aqui observamos los 4 tipos de almacenamiento que seran usados dependiendo del caso de uso, por ejemplo la parametrizacion en bases de datos relacionales, los eventos en mongo, y el registro en una base de datos clave valor como dynamoDB.
 - Seguridad: Se usuara kms para guardar certificados de seguridad, secret manager para los secretos y waf para la seguridad perimetral, la autenticacion con un servidor de autenticacion, VPN para integrar los servicios on premise, todos los microservicios se realizaran siguiendo OWASP.
 
-## Criterios de aceptación
-Escenario 1: Creacion de salones
+## Decisiones Tecnicas
 
-- Dado que la feria requiere una ubicacion para cada evento
-- Cuando el usuario quiera crear una ubicacion
-- Entonces el usuario debería registrar los siguientes detalles:
-    - nombre,
-    - nomenclatura,
-    - referencia,
-    - Codigo.
-- El sistema debera indicar que fue creado con exito y devolver el codigo
-
-Escenario 2: Creacion de eventos
-
-- Dado que la feria requiere eventos
-- Cuando el usuario quiera crear un evento
-- Entonces el usuario debería registrar los siguientes detalles:
-    - nombre,
-    - salon,
-    - fecha y hora,
-    - capacidad,
-    - orador
-    - tema
-- El sistema debera indicar que fue creado con exito y devolver el id del evento
-
-Escenario 3: Registro de eventos
-
-- Dado que los asistentes requieren registrarse a un evento
-- Cuando el usuario quiera registrarse
-- Entonces el usuario debería registrar los siguientes detalles:
-    - evento,
-    - nombres,
-    - identificacion,
-    - email
-- El sistema debera indicar que fue creado con exito y debe enviar un mensaje de correo al usuario con un codigo
-
-Escenario 4: Ingreso de eventos
-
-- Dado que los asistentes requieren asistir a un evento
-- Cuando el usuario quiera ingresar
-- Entonces el usuario debería registrar los siguientes detalles:
-    - codigo,
-    - email
-- El sistema debera indicar en el registro que el usuario asistio, indicar que puede seguir y mandar un correo de confirmación.
+Alta disponibilidad:
+Para suplir la alta disponiblidad en el frontend se propone utilizar un servicio global tipo s3 para hosting de la aplicacion, que junto con un CDN nos garantizan la disponibilidad del servicio, en el caso del backend se utilizar microservicios que usaran la capacidad de autoescalado, acompañandos de la capacidad de balanceador de EKS y/o kubernetes. por ultimo para las bases de datos se manejaran dos zonas de disponiblidad y se sugiere usar en caso de ser relacionar un servicio como aurora que tiene alta disponibilidad y se pueden crear maquinas de lectura para repartir las cargas muy similar a cqrs.
+Integraciones:
+Se utilizara una vpn para conectar con el sistema onpremise para evitar exponer las bases de datos por internet.
+Para integrar con terceros se propone crear micros especificos, y/o usar apigateway para que se conecte entregandoles un apikey y un plan de uso.
+Migración de datos:
+la migracion inicial se usara un sistema de migracion tipo database migration-ETL para casos en los que cambie el tipo de persistencia y o se aislen tablas, y un mecanismo de change data capture para las tablas que funcionen hibridas
 
 
 ## Definir métodos de integración y de exposición de datos
@@ -86,10 +51,6 @@ Para exponer los datos utilizaremos api de tipo rest, y las respuestas estaran e
 
 Los datos tambien se expondran en una web la cual solo se podra acceder por https y debidamente autenticados.
 
-
-## Atributos de calidad
-
-![](img/atributos.png)
 
 ## Patrones, estilos y tacticas a usar.
 
