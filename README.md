@@ -1,14 +1,14 @@
 # <a href="https://github.com/janneison">JANNEISON GERMAN GALINDO RIVERA</a>
 
-# Caso  práctico Arquitecto de Solución
+# Escenario de Evaluación para Candidato a Arquitecto TI
 En esta documentacion se resuelve la prueba tecnica para el cargo de arquitecto de solución.
 
 ## Arquitectura AWS
 
-El problema plantea una arquitectura orientada a microservicios con el objectivo de satisfacer la demanda a medida que aumente su uso, por ejemplo en el registro se escalaran los microservicios de registro, y al momento de crear los eventos posiblemente el de eventos. El siguiente diagrama ilustra la solución.
+El problema plantea una arquitectura orientada a microservicios con el objectivo de satisfacer la demanda a medida que aumente su uso, tambien es importante evitar hacer bigbang fundamentalmente con  el backend, posiblemente con el CDN apoyado con microfrontend se pueda utilizar la aplicacion actual y migrarla poco a poco en caso que no acepte una facil migracion a la nube si esta echa en angular o react solo seria apoyarse en un apigateway para gestionar las peticiones, tambien podemos incluir el uso de evento para casos de negocio que sea asincronos como el cierre financiero. El siguiente diagrama ilustra la solución de manera general con contexto de la misma.
 
 
-![](img/feria-del-libro.png)
+![](img/xm-context.png)
 
 Descripción de los servicios a usar.
 
