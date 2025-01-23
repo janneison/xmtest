@@ -36,12 +36,12 @@ Descripción de los servicios a usar.
 
 ## Decisiones Tecnicas
 
-Alta disponibilidad:
+- Alta disponibilidad:
 Para suplir la alta disponiblidad en el frontend se propone utilizar un servicio global tipo s3 para hosting de la aplicacion, que junto con un CDN nos garantizan la disponibilidad del servicio, en el caso del backend se utilizar microservicios que usaran la capacidad de autoescalado, acompañandos de la capacidad de balanceador de EKS y/o kubernetes. por ultimo para las bases de datos se manejaran dos zonas de disponiblidad y se sugiere usar en caso de ser relacionar un servicio como aurora que tiene alta disponibilidad y se pueden crear maquinas de lectura para repartir las cargas muy similar a cqrs.
-Integraciones:
+- Integraciones:
 Se utilizara una vpn para conectar con el sistema onpremise para evitar exponer las bases de datos por internet.
 Para integrar con terceros se propone crear micros especificos, y/o usar apigateway para que se conecte entregandoles un apikey y un plan de uso.
-Migración de datos:
+- Migración de datos:
 la migracion inicial se usara un sistema de migracion tipo database migration-ETL para casos en los que cambie el tipo de persistencia y o se aislen tablas, y un mecanismo de change data capture para las tablas que funcionen hibridas
 
 
