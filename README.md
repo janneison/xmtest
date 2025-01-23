@@ -3,12 +3,26 @@
 # Escenario de Evaluación para Candidato a Arquitecto TI
 En esta documentacion se resuelve la prueba tecnica para el cargo de arquitecto de solución.
 
-## Arquitectura AWS
+## Arquitectura
 
 El problema plantea una arquitectura orientada a microservicios con el objectivo de satisfacer la demanda a medida que aumente su uso, tambien es importante evitar hacer bigbang fundamentalmente con  el backend, posiblemente con el CDN apoyado con microfrontend se pueda utilizar la aplicacion actual y migrarla poco a poco en caso que no acepte una facil migracion a la nube si esta echa en angular o react solo seria apoyarse en un apigateway para gestionar las peticiones, tambien podemos incluir el uso de evento para casos de negocio que sea asincronos como el cierre financiero. El siguiente diagrama ilustra la solución de manera general con contexto de la misma.
 
 
 ![](img/xm-context.png)
+
+## Diagrama de contenedor
+
+El siguiente diagrama ilustra de manera general la solucion planteada con algunas decisiones tecnicas y otras pendiente de revision de todos los driver de arquitectura.
+
+![](img/xm-Contenedor.png)
+
+## Arquitectura de solucion
+
+El siguiente diagrama de componentes que se realiza a manera de arquitectura cloud ilustra los servicios, algunas patrones de arquitectura sugeridos como apigateway, eventos, algunos servicios de seguridad los cuales se describen al pie de la imagen.
+
+
+![](img/solution-xm-test.png)
+
 
 Descripción de los servicios a usar.
 
