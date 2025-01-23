@@ -26,11 +26,11 @@ El siguiente diagrama de componentes que se realiza a manera de arquitectura clo
 
 Descripción de los servicios a usar.
 
-- FrontEnd: Se sugiere desplegarla con s3, tambien se podria utilizar amplify para desplegarlo, en este caso sugerimos un bucket para sitios web estaticos, con el objetivo de usar un servicio serverless y de igual manera en el punto anterior se presento una propuesta de despliegue continuo por tal motivo obviamos amplify, adicionalmente se usara cloudfront para entregar el contenido de la app web.
+- FrontEnd: Se sugiere desplegarla con s3, tambien se podria utilizar amplify para desplegarlo, en este caso sugerimos un bucket para sitios web estaticos, con el objetivo de usar un servicio serverless y se podria usar amplify como mecanismos de despliegue, pero lo ideal es crear un proceso de devsecops o adapatarse al actual de la compañia, adicionalmente se usara cloudfront para entregar el contenido de la app web.
 - Apigateway: Se utilizara para entregar las api de los servicios expuestos ya sea por EKS, lambda, un servicio que aun no se migre del monolito, de igual manera se utilizara la funcion de autorizador para utilizar la autenticacion existente.
 - Microservicios: Se orquestaran en kubernetes y adicionalmente los exporadicos se sugiere convertirlos en aws lambdas.
-- SNS: El diagrama muestra un SNS el cual se puede utilizar para notificar que fue registrado en su correo.
-- Cloudwacth: aqui manejaremos los logs.
+- SNS: El diagrama muestra un SNS el cual se puede utilizar para el manejo de eventos.
+- Cloudwacth: aqui manejaremos los logs, no se ilustra en el diagrama  pero se pretende usarlo para observabilidad.
 - Almacenamiento: aqui observamos los 4 tipos de almacenamiento que seran usados dependiendo del caso de uso, por ejemplo la parametrizacion en bases de datos relacionales, los eventos en mongo, y el registro en una base de datos clave valor como dynamoDB.
 - Seguridad: Se usuara kms para guardar certificados de seguridad, secret manager para los secretos y waf para la seguridad perimetral, la autenticacion con un servidor de autenticacion, VPN para integrar los servicios on premise, todos los microservicios se realizaran siguiendo OWASP.
 
