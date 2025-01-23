@@ -18,7 +18,7 @@ Descripción de los servicios a usar.
 - SNS: El diagrama muestra un SNS el cual se puede utilizar para notificar que fue registrado en su correo.
 - Cloudwacth: aqui manejaremos los logs.
 - Almacenamiento: aqui observamos los 4 tipos de almacenamiento que seran usados dependiendo del caso de uso, por ejemplo la parametrizacion en bases de datos relacionales, los eventos en mongo, y el registro en una base de datos clave valor como dynamoDB.
-- Seguridad: Se usuara kms para guardar certificados de seguridad, secret manager para los secretos y waf para la seguridad perimetral, la autenticacion con cognito.
+- Seguridad: Se usuara kms para guardar certificados de seguridad, secret manager para los secretos y waf para la seguridad perimetral, la autenticacion con un servidor de autenticacion, VPN para integrar los servicios on premise, todos los microservicios se realizaran siguiendo OWASP.
 
 ## Criterios de aceptación
 Escenario 1: Creacion de salones
